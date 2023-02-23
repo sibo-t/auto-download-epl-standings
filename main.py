@@ -9,17 +9,18 @@ import sys
 import random
 
 
-# Create options object for headless mode
 chrome_options = Options()
 
 if len(sys.argv) > 1 and os.path.isdir(sys.argv[1]):
-    # Set the default download directory to the root folder
+    # Set the default download directory to the desired folder
     prefs = {'download.default_directory' : sys.argv[1]}
     chrome_options.add_experimental_option('prefs', prefs)
 
-chrome_options.add_argument('--headless')
+# To not show the browser
+# chrome_options.add_argument('--headless')
 
 driver = webdriver.Chrome(options=chrome_options)
+
 driver.get("https://www.rotowire.com/soccer/league-table.php")
 time.sleep(random.randint(5,10))
 
@@ -36,7 +37,8 @@ ActionChains(driver)\
     .click()\
     .perform()
 
-time.sleep(random.randint(5,10))
+#Download wait
+time.sleep(5)
 
 
 driver.quit()

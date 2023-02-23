@@ -1,9 +1,9 @@
 # Makefile to create a text file with the passed argument
 
-all: create_file, install
+all: run, install, bad
 
-create_file:
-	echo "$(d)" > dir.txt
+run:
+	python3 main.py $(ARG)
 
 install:
 	$(eval ver=$(shell sh check_chrome_version.sh))
